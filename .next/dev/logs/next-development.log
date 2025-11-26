@@ -1,0 +1,850 @@
+[00:00:02.200] Server  LOG      ✓ Ready in 1693ms
+[00:00:06.458] Server  LOG      ○ Compiling / ...
+[00:00:06.909] Server  ERROR    ⨯ ./src/app/layout.js:3:1
+Ecmascript file had an error
+  1 | import '@fortawesome/fontawesome-free/css/all.min.css';
+  2 | import React from 'react';
+> 3 | import ReactDOM from 'react-dom/client';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import './index.css';
+  5 | import App from './App';
+  6 | import reportWebVitals from './reportWebVitals';
+
+You're importing a component that imports react-dom/client. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+Learn more: https://nextjs.org/docs/app/building-your-application/rendering
+
+
+
+./src/app/layout.js:5:1
+Module not found: Can't resolve './App'
+  3 | import ReactDOM from 'react-dom/client';
+  4 | import './index.css';
+> 5 | import App from './App';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import reportWebVitals from './reportWebVitals';
+  7 | import GlobalStyle from './assets/GlobalStyle';
+  8 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+./src/app/page.js:7:1
+Module not found: Can't resolve './Login_Create/index'
+   5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+   6 | import { PublicRoutes } from "./routes/routes";
+>  7 | import { Login, Create } from './Login_Create/index'
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 |
+  10 | //import hook
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+./src/app/layout.js:7:1
+Module not found: Can't resolve './assets/GlobalStyle'
+   5 | import App from './App';
+   6 | import reportWebVitals from './reportWebVitals';
+>  7 | import GlobalStyle from './assets/GlobalStyle';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const root = ReactDOM.createRoot(document.getElementById('root'));
+  10 | root.render(
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+./src/app/page.js:11:1
+Module not found: Can't resolve './hook'
+   9 |
+  10 | //import hook
+> 11 | import { LoginHook } from "./hook";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 |
+  14 | function App() {
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+./src/app/layout.js:4:1
+Module not found: Can't resolve './index.css'
+  2 | import React from 'react';
+  3 | import ReactDOM from 'react-dom/client';
+> 4 | import './index.css';
+    | ^^^^^^^^^^^^^^^^^^^^^
+  5 | import App from './App';
+  6 | import reportWebVitals from './reportWebVitals';
+  7 | import GlobalStyle from './assets/GlobalStyle';
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+./src/app/page.js:2:1
+Module not found: Can't resolve './layouts'
+  1 | import { Fragment } from "react";
+> 2 | import { DefaultLayout } from "./layouts";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | //routes
+  5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+./src/app/layout.js:6:1
+Module not found: Can't resolve './reportWebVitals'
+  4 | import './index.css';
+  5 | import App from './App';
+> 6 | import reportWebVitals from './reportWebVitals';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import GlobalStyle from './assets/GlobalStyle';
+  8 |
+  9 | const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+./src/app/page.js:6:1
+Module not found: Can't resolve './routes/routes'
+  4 | //routes
+  5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+> 6 | import { PublicRoutes } from "./routes/routes";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Login, Create } from './Login_Create/index'
+  8 |
+  9 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:08.607] Browser ERROR   uncaughtError: Error: ./src/app/layout.js:3:1
+Ecmascript file had an error
+  1 | import '@fortawesome/fontawesome-free/css/all.min.css';
+  2 | import React from 'react';
+> 3 | import ReactDOM from 'react-dom/client';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import './index.css';
+  5 | import App from './App';
+  6 | import reportWebVitals from './reportWebVitals';
+
+You're importing a component that imports react-dom/client. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+Learn more: https://nextjs.org/docs/app/building-your-application/rendering
+
+
+[00:00:08.835] Browser ERROR   ./src/app/layout.js:3:1
+Ecmascript file had an error
+  1 | import '@fortawesome/fontawesome-free/css/all.min.css';
+  2 | import React from 'react';
+> 3 | import ReactDOM from 'react-dom/client';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import './index.css';
+  5 | import App from './App';
+  6 | import reportWebVitals from './reportWebVitals';
+
+You're importing a component that imports react-dom/client. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+Learn more: https://nextjs.org/docs/app/building-your-application/rendering
+[00:00:08.835] Browser ERROR   ./src/app/layout.js:5:1
+Module not found: Can't resolve './App'
+  3 | import ReactDOM from 'react-dom/client';
+  4 | import './index.css';
+> 5 | import App from './App';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import reportWebVitals from './reportWebVitals';
+  7 | import GlobalStyle from './assets/GlobalStyle';
+  8 |
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:08.835] Browser ERROR   ./src/app/page.js:7:1
+Module not found: Can't resolve './Login_Create/index'
+   5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+   6 | import { PublicRoutes } from "./routes/routes";
+>  7 | import { Login, Create } from './Login_Create/index'
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 |
+  10 | //import hook
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:08.835] Browser ERROR   ./src/app/layout.js:7:1
+Module not found: Can't resolve './assets/GlobalStyle'
+   5 | import App from './App';
+   6 | import reportWebVitals from './reportWebVitals';
+>  7 | import GlobalStyle from './assets/GlobalStyle';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const root = ReactDOM.createRoot(document.getElementById('root'));
+  10 | root.render(
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:08.835] Browser ERROR   ./src/app/page.js:11:1
+Module not found: Can't resolve './hook'
+   9 |
+  10 | //import hook
+> 11 | import { LoginHook } from "./hook";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 |
+  14 | function App() {
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:08.835] Browser ERROR   ./src/app/layout.js:4:1
+Module not found: Can't resolve './index.css'
+  2 | import React from 'react';
+  3 | import ReactDOM from 'react-dom/client';
+> 4 | import './index.css';
+    | ^^^^^^^^^^^^^^^^^^^^^
+  5 | import App from './App';
+  6 | import reportWebVitals from './reportWebVitals';
+  7 | import GlobalStyle from './assets/GlobalStyle';
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:08.835] Browser ERROR   ./src/app/page.js:2:1
+Module not found: Can't resolve './layouts'
+  1 | import { Fragment } from "react";
+> 2 | import { DefaultLayout } from "./layouts";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | //routes
+  5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:08.835] Browser ERROR   ./src/app/layout.js:6:1
+Module not found: Can't resolve './reportWebVitals'
+  4 | import './index.css';
+  5 | import App from './App';
+> 6 | import reportWebVitals from './reportWebVitals';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import GlobalStyle from './assets/GlobalStyle';
+  8 |
+  9 | const root = ReactDOM.createRoot(document.getElementById('root'));
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:08.835] Browser ERROR   ./src/app/page.js:6:1
+Module not found: Can't resolve './routes/routes'
+  4 | //routes
+  5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+> 6 | import { PublicRoutes } from "./routes/routes";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Login, Create } from './Login_Create/index'
+  8 |
+  9 |
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:09.112] Browser ERROR   ./src/app/layout.js:3:1
+Ecmascript file had an error
+  1 | import '@fortawesome/fontawesome-free/css/all.min.css';
+  2 | import React from 'react';
+> 3 | import ReactDOM from 'react-dom/client';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import './index.css';
+  5 | import App from './App';
+  6 | import reportWebVitals from './reportWebVitals';
+
+You're importing a component that imports react-dom/client. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+Learn more: https://nextjs.org/docs/app/building-your-application/rendering
+[00:00:09.112] Browser ERROR   ./src/app/layout.js:5:1
+Module not found: Can't resolve './App'
+  3 | import ReactDOM from 'react-dom/client';
+  4 | import './index.css';
+> 5 | import App from './App';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import reportWebVitals from './reportWebVitals';
+  7 | import GlobalStyle from './assets/GlobalStyle';
+  8 |
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:09.112] Browser ERROR   ./src/app/page.js:7:1
+Module not found: Can't resolve './Login_Create/index'
+   5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+   6 | import { PublicRoutes } from "./routes/routes";
+>  7 | import { Login, Create } from './Login_Create/index'
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 |
+  10 | //import hook
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:09.112] Browser ERROR   ./src/app/layout.js:7:1
+Module not found: Can't resolve './assets/GlobalStyle'
+   5 | import App from './App';
+   6 | import reportWebVitals from './reportWebVitals';
+>  7 | import GlobalStyle from './assets/GlobalStyle';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const root = ReactDOM.createRoot(document.getElementById('root'));
+  10 | root.render(
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:09.112] Browser ERROR   ./src/app/page.js:11:1
+Module not found: Can't resolve './hook'
+   9 |
+  10 | //import hook
+> 11 | import { LoginHook } from "./hook";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 |
+  14 | function App() {
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:09.112] Browser ERROR   ./src/app/layout.js:4:1
+Module not found: Can't resolve './index.css'
+  2 | import React from 'react';
+  3 | import ReactDOM from 'react-dom/client';
+> 4 | import './index.css';
+    | ^^^^^^^^^^^^^^^^^^^^^
+  5 | import App from './App';
+  6 | import reportWebVitals from './reportWebVitals';
+  7 | import GlobalStyle from './assets/GlobalStyle';
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:09.112] Browser ERROR   ./src/app/page.js:2:1
+Module not found: Can't resolve './layouts'
+  1 | import { Fragment } from "react";
+> 2 | import { DefaultLayout } from "./layouts";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | //routes
+  5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:09.112] Browser ERROR   ./src/app/layout.js:6:1
+Module not found: Can't resolve './reportWebVitals'
+  4 | import './index.css';
+  5 | import App from './App';
+> 6 | import reportWebVitals from './reportWebVitals';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import GlobalStyle from './assets/GlobalStyle';
+  8 |
+  9 | const root = ReactDOM.createRoot(document.getElementById('root'));
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:09.112] Browser ERROR   ./src/app/page.js:6:1
+Module not found: Can't resolve './routes/routes'
+  4 | //routes
+  5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+> 6 | import { PublicRoutes } from "./routes/routes";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Login, Create } from './Login_Create/index'
+  8 |
+  9 |
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:3:1
+Ecmascript file had an error
+  1 | import '@fortawesome/fontawesome-free/css/all.min.css';
+  2 | import React from 'react';
+> 3 | import ReactDOM from 'react-dom/client';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import './index.css';
+  5 | import App from './App';
+  6 | import reportWebVitals from './reportWebVitals';
+
+You're importing a component that imports react-dom/client. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+Learn more: https://nextjs.org/docs/app/building-your-application/rendering
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:5:1
+Module not found: Can't resolve './App'
+  3 | import ReactDOM from 'react-dom/client';
+  4 | import './index.css';
+> 5 | import App from './App';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import reportWebVitals from './reportWebVitals';
+  7 | import GlobalStyle from './assets/GlobalStyle';
+  8 |
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/page.js:7:1
+Module not found: Can't resolve './Login_Create/index'
+   5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+   6 | import { PublicRoutes } from "./routes/routes";
+>  7 | import { Login, Create } from './Login_Create/index'
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 |
+  10 | //import hook
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:7:1
+Module not found: Can't resolve './assets/GlobalStyle'
+   5 | import App from './App';
+   6 | import reportWebVitals from './reportWebVitals';
+>  7 | import GlobalStyle from './assets/GlobalStyle';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const root = ReactDOM.createRoot(document.getElementById('root'));
+  10 | root.render(
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/page.js:11:1
+Module not found: Can't resolve './hook'
+   9 |
+  10 | //import hook
+> 11 | import { LoginHook } from "./hook";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 |
+  14 | function App() {
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:4:1
+Module not found: Can't resolve './index.css'
+  2 | import React from 'react';
+  3 | import ReactDOM from 'react-dom/client';
+> 4 | import './index.css';
+    | ^^^^^^^^^^^^^^^^^^^^^
+  5 | import App from './App';
+  6 | import reportWebVitals from './reportWebVitals';
+  7 | import GlobalStyle from './assets/GlobalStyle';
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/page.js:2:1
+Module not found: Can't resolve './layouts'
+  1 | import { Fragment } from "react";
+> 2 | import { DefaultLayout } from "./layouts";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | //routes
+  5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:6:1
+Module not found: Can't resolve './reportWebVitals'
+  4 | import './index.css';
+  5 | import App from './App';
+> 6 | import reportWebVitals from './reportWebVitals';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import GlobalStyle from './assets/GlobalStyle';
+  8 |
+  9 | const root = ReactDOM.createRoot(document.getElementById('root'));
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/page.js:6:1
+Module not found: Can't resolve './routes/routes'
+  4 | //routes
+  5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+> 6 | import { PublicRoutes } from "./routes/routes";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Login, Create } from './Login_Create/index'
+  8 |
+  9 |
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:3:1
+Ecmascript file had an error
+  1 | import '@fortawesome/fontawesome-free/css/all.min.css';
+  2 | import React from 'react';
+> 3 | import ReactDOM from 'react-dom/client';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import './index.css';
+  5 | import App from './App';
+  6 | import reportWebVitals from './reportWebVitals';
+
+You're importing a component that imports react-dom/client. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+Learn more: https://nextjs.org/docs/app/building-your-application/rendering
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:5:1
+Module not found: Can't resolve './App'
+  3 | import ReactDOM from 'react-dom/client';
+  4 | import './index.css';
+> 5 | import App from './App';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import reportWebVitals from './reportWebVitals';
+  7 | import GlobalStyle from './assets/GlobalStyle';
+  8 |
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/page.js:7:1
+Module not found: Can't resolve './Login_Create/index'
+   5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+   6 | import { PublicRoutes } from "./routes/routes";
+>  7 | import { Login, Create } from './Login_Create/index'
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 |
+  10 | //import hook
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:7:1
+Module not found: Can't resolve './assets/GlobalStyle'
+   5 | import App from './App';
+   6 | import reportWebVitals from './reportWebVitals';
+>  7 | import GlobalStyle from './assets/GlobalStyle';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const root = ReactDOM.createRoot(document.getElementById('root'));
+  10 | root.render(
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/page.js:11:1
+Module not found: Can't resolve './hook'
+   9 |
+  10 | //import hook
+> 11 | import { LoginHook } from "./hook";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 |
+  14 | function App() {
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:4:1
+Module not found: Can't resolve './index.css'
+  2 | import React from 'react';
+  3 | import ReactDOM from 'react-dom/client';
+> 4 | import './index.css';
+    | ^^^^^^^^^^^^^^^^^^^^^
+  5 | import App from './App';
+  6 | import reportWebVitals from './reportWebVitals';
+  7 | import GlobalStyle from './assets/GlobalStyle';
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/page.js:2:1
+Module not found: Can't resolve './layouts'
+  1 | import { Fragment } from "react";
+> 2 | import { DefaultLayout } from "./layouts";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | //routes
+  5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:6:1
+Module not found: Can't resolve './reportWebVitals'
+  4 | import './index.css';
+  5 | import App from './App';
+> 6 | import reportWebVitals from './reportWebVitals';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import GlobalStyle from './assets/GlobalStyle';
+  8 |
+  9 | const root = ReactDOM.createRoot(document.getElementById('root'));
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/page.js:6:1
+Module not found: Can't resolve './routes/routes'
+  4 | //routes
+  5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+> 6 | import { PublicRoutes } from "./routes/routes";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Login, Create } from './Login_Create/index'
+  8 |
+  9 |
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:3:1
+Ecmascript file had an error
+  1 | import '@fortawesome/fontawesome-free/css/all.min.css';
+  2 | import React from 'react';
+> 3 | import ReactDOM from 'react-dom/client';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import './index.css';
+  5 | import App from './App';
+  6 | import reportWebVitals from './reportWebVitals';
+
+You're importing a component that imports react-dom/client. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+Learn more: https://nextjs.org/docs/app/building-your-application/rendering
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:5:1
+Module not found: Can't resolve './App'
+  3 | import ReactDOM from 'react-dom/client';
+  4 | import './index.css';
+> 5 | import App from './App';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import reportWebVitals from './reportWebVitals';
+  7 | import GlobalStyle from './assets/GlobalStyle';
+  8 |
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/page.js:7:1
+Module not found: Can't resolve './Login_Create/index'
+   5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+   6 | import { PublicRoutes } from "./routes/routes";
+>  7 | import { Login, Create } from './Login_Create/index'
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 |
+  10 | //import hook
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:7:1
+Module not found: Can't resolve './assets/GlobalStyle'
+   5 | import App from './App';
+   6 | import reportWebVitals from './reportWebVitals';
+>  7 | import GlobalStyle from './assets/GlobalStyle';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const root = ReactDOM.createRoot(document.getElementById('root'));
+  10 | root.render(
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/page.js:11:1
+Module not found: Can't resolve './hook'
+   9 |
+  10 | //import hook
+> 11 | import { LoginHook } from "./hook";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 |
+  14 | function App() {
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:4:1
+Module not found: Can't resolve './index.css'
+  2 | import React from 'react';
+  3 | import ReactDOM from 'react-dom/client';
+> 4 | import './index.css';
+    | ^^^^^^^^^^^^^^^^^^^^^
+  5 | import App from './App';
+  6 | import reportWebVitals from './reportWebVitals';
+  7 | import GlobalStyle from './assets/GlobalStyle';
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/page.js:2:1
+Module not found: Can't resolve './layouts'
+  1 | import { Fragment } from "react";
+> 2 | import { DefaultLayout } from "./layouts";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | //routes
+  5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:6:1
+Module not found: Can't resolve './reportWebVitals'
+  4 | import './index.css';
+  5 | import App from './App';
+> 6 | import reportWebVitals from './reportWebVitals';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import GlobalStyle from './assets/GlobalStyle';
+  8 |
+  9 | const root = ReactDOM.createRoot(document.getElementById('root'));
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/page.js:6:1
+Module not found: Can't resolve './routes/routes'
+  4 | //routes
+  5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+> 6 | import { PublicRoutes } from "./routes/routes";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Login, Create } from './Login_Create/index'
+  8 |
+  9 |
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:3:1
+Ecmascript file had an error
+  1 | import '@fortawesome/fontawesome-free/css/all.min.css';
+  2 | import React from 'react';
+> 3 | import ReactDOM from 'react-dom/client';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import './index.css';
+  5 | import App from './App';
+  6 | import reportWebVitals from './reportWebVitals';
+
+You're importing a component that imports react-dom/client. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+Learn more: https://nextjs.org/docs/app/building-your-application/rendering
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:5:1
+Module not found: Can't resolve './App'
+  3 | import ReactDOM from 'react-dom/client';
+  4 | import './index.css';
+> 5 | import App from './App';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import reportWebVitals from './reportWebVitals';
+  7 | import GlobalStyle from './assets/GlobalStyle';
+  8 |
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/page.js:7:1
+Module not found: Can't resolve './Login_Create/index'
+   5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+   6 | import { PublicRoutes } from "./routes/routes";
+>  7 | import { Login, Create } from './Login_Create/index'
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 |
+  10 | //import hook
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:7:1
+Module not found: Can't resolve './assets/GlobalStyle'
+   5 | import App from './App';
+   6 | import reportWebVitals from './reportWebVitals';
+>  7 | import GlobalStyle from './assets/GlobalStyle';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const root = ReactDOM.createRoot(document.getElementById('root'));
+  10 | root.render(
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/page.js:11:1
+Module not found: Can't resolve './hook'
+   9 |
+  10 | //import hook
+> 11 | import { LoginHook } from "./hook";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 |
+  14 | function App() {
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:4:1
+Module not found: Can't resolve './index.css'
+  2 | import React from 'react';
+  3 | import ReactDOM from 'react-dom/client';
+> 4 | import './index.css';
+    | ^^^^^^^^^^^^^^^^^^^^^
+  5 | import App from './App';
+  6 | import reportWebVitals from './reportWebVitals';
+  7 | import GlobalStyle from './assets/GlobalStyle';
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/page.js:2:1
+Module not found: Can't resolve './layouts'
+  1 | import { Fragment } from "react";
+> 2 | import { DefaultLayout } from "./layouts";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | //routes
+  5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/layout.js:6:1
+Module not found: Can't resolve './reportWebVitals'
+  4 | import './index.css';
+  5 | import App from './App';
+> 6 | import reportWebVitals from './reportWebVitals';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import GlobalStyle from './assets/GlobalStyle';
+  8 |
+  9 | const root = ReactDOM.createRoot(document.getElementById('root'));
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:13.097] Browser ERROR   ./src/app/page.js:6:1
+Module not found: Can't resolve './routes/routes'
+  4 | //routes
+  5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+> 6 | import { PublicRoutes } from "./routes/routes";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Login, Create } from './Login_Create/index'
+  8 |
+  9 |
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:33.093] Browser ERROR   ./src/app/layout.js:3:1
+Ecmascript file had an error
+  1 | import '@fortawesome/fontawesome-free/css/all.min.css';
+  2 | import React from 'react';
+> 3 | import ReactDOM from 'react-dom/client';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import './index.css';
+  5 | import App from './App';
+  6 | import reportWebVitals from './reportWebVitals';
+
+You're importing a component that imports react-dom/client. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+Learn more: https://nextjs.org/docs/app/building-your-application/rendering
+[00:06:33.093] Browser ERROR   ./src/app/layout.js:5:1
+Module not found: Can't resolve './App'
+  3 | import ReactDOM from 'react-dom/client';
+  4 | import './index.css';
+> 5 | import App from './App';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import reportWebVitals from './reportWebVitals';
+  7 | import GlobalStyle from './assets/GlobalStyle';
+  8 |
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:33.093] Browser ERROR   ./src/app/page.js:7:1
+Module not found: Can't resolve './Login_Create/index'
+   5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+   6 | import { PublicRoutes } from "./routes/routes";
+>  7 | import { Login, Create } from './Login_Create/index'
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 |
+  10 | //import hook
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:33.093] Browser ERROR   ./src/app/layout.js:7:1
+Module not found: Can't resolve './assets/GlobalStyle'
+   5 | import App from './App';
+   6 | import reportWebVitals from './reportWebVitals';
+>  7 | import GlobalStyle from './assets/GlobalStyle';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const root = ReactDOM.createRoot(document.getElementById('root'));
+  10 | root.render(
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:33.093] Browser ERROR   ./src/app/page.js:11:1
+Module not found: Can't resolve './hook'
+   9 |
+  10 | //import hook
+> 11 | import { LoginHook } from "./hook";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 |
+  14 | function App() {
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:33.093] Browser ERROR   ./src/app/layout.js:4:1
+Module not found: Can't resolve './index.css'
+  2 | import React from 'react';
+  3 | import ReactDOM from 'react-dom/client';
+> 4 | import './index.css';
+    | ^^^^^^^^^^^^^^^^^^^^^
+  5 | import App from './App';
+  6 | import reportWebVitals from './reportWebVitals';
+  7 | import GlobalStyle from './assets/GlobalStyle';
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:33.093] Browser ERROR   ./src/app/page.js:2:1
+Module not found: Can't resolve './layouts'
+  1 | import { Fragment } from "react";
+> 2 | import { DefaultLayout } from "./layouts";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | //routes
+  5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:33.093] Browser ERROR   ./src/app/layout.js:6:1
+Module not found: Can't resolve './reportWebVitals'
+  4 | import './index.css';
+  5 | import App from './App';
+> 6 | import reportWebVitals from './reportWebVitals';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import GlobalStyle from './assets/GlobalStyle';
+  8 |
+  9 | const root = ReactDOM.createRoot(document.getElementById('root'));
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:33.093] Browser ERROR   ./src/app/page.js:6:1
+Module not found: Can't resolve './routes/routes'
+  4 | //routes
+  5 | import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+> 6 | import { PublicRoutes } from "./routes/routes";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Login, Create } from './Login_Create/index'
+  8 |
+  9 |
+
+https://nextjs.org/docs/messages/module-not-found

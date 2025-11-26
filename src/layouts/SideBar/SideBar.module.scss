@@ -1,0 +1,103 @@
+.wrapper {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    background-color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.logo-wrapper {
+    display: flex;
+    width: 100%;
+    font-size: 30px;
+    margin: 24px 24px;
+    font-family: 'Times New Roman', Times, serif;
+
+    .logo {
+        color: green;
+    }
+
+    span {
+        font-weight: 600;
+        user-select: none;
+    }
+}
+
+.profile-wrapper {
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    width: 100%;
+    font-size: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    .icon {
+        font-size: 40px;
+    }
+
+    span {
+        font-weight: 600;
+    }
+
+    .profile {
+        div {
+            color: green;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+    }
+
+}
+
+.select-wrapper {
+    display: block;
+    width: 100%;
+
+    a {
+        text-decoration: none;
+    }
+
+    button {
+        padding: 30px 30px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border: none;
+        border-bottom: 1px solid rgb(255, 255, 255);
+
+        span {
+            font-size: 16px;
+            margin-left: 12px;
+        }
+
+        .icon {
+            font-size: 16px;
+            margin-left: 12px;
+        }
+
+        &:hover {
+            background-color: rgba(0, 128, 0, 1);
+            color: white;
+            cursor: pointer;
+            animation: fadeGreen linear 0.5s;
+        }
+    }
+}
+
+.active {
+    background-color: rgba(0, 128, 0, 1);
+    color: white;
+}
+
+@keyframes fadeGreen {
+    from {
+        background-color: rgba(0, 128, 0, 0.2);
+    }
+
+    to {
+        background-color: rgba(0, 128, 0, 1);
+    }
+}

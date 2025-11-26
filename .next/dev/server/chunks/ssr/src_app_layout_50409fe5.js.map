@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///D:/theo_doi_chi_tieu_ui_2/src/app/layout.js"],"sourcesContent":["import '@fortawesome/fontawesome-free/css/all.min.css';\r\nimport React from 'react';\r\nimport ReactDOM from 'react-dom/client';\r\nimport './index.css';\r\nimport App from './App';\r\nimport reportWebVitals from './reportWebVitals';\r\nimport GlobalStyle from './assets/GlobalStyle';\r\n\r\nconst root = ReactDOM.createRoot(document.getElementById('root'));\r\nroot.render(\r\n  <React.StrictMode>\r\n    <GlobalStyle>\r\n      <App />\r\n    </GlobalStyle>\r\n  </React.StrictMode>\r\n);\r\n\r\n// If you want to start measuring performance in your app, pass a function\r\n// to log results (for example: reportWebVitals(console.log))\r\n// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals\r\nreportWebVitals();\r\n"],"names":[],"mappings":";;AACA;AACA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAMA,MAAM,OAAO,6KAAQ,CAAC,UAAU,CAAC,SAAS,cAAc,CAAC;AACzD,KAAK,MAAM,eACT,8OAAC,gNAAK,CAAC,UAAU;cACf,cAAA,8OAAC;kBACC,cAAA,8OAAC;;;;;;;;;;;;;;;AAKP,0EAA0E;AAC1E,6DAA6D;AAC7D,0EAA0E;AAC1E"}}]
+}

@@ -1,0 +1,105 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 24px 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    gap: 60px;
+
+    >div:nth-child(1) {
+
+        h1 {
+            font-size: 40px;
+            font-weight: 600;
+        }
+
+        span {
+            font-size: 16px;
+            color: green;
+            padding-top: 24px;
+        }
+
+    }
+}
+
+.giao-dich-va-lich-su {
+
+    display: flex;
+    flex-direction: row;
+    gap: 3%;
+
+
+    .them-chi-tieu {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background-color: white;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+        border-radius: 12px;
+        padding: 40px;
+        flex: 2;
+        overflow-y: hidden;
+        overflow-x: hidden;
+
+        label {
+            width: 180px;
+            font-weight: 600;
+        }
+
+        input,
+        select {
+            flex: 1;
+            padding: 10px 12px;
+            border-radius: 8px;
+            height: 46px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #36A12D;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            height: 46px;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            padding: 0 24px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: #2e8b25;
+                box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+                transform: translateY(-2px);
+            }
+
+            &:active {
+                transform: translateY(0);
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+
+
+    .lich-su {
+        padding: 12px 12px;
+        background-color: white;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+        border-radius: 12px;
+        flex: 6;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        width: 100%;
+
+        h1{
+            margin: 24px 4px;
+        }
+
+        .history-table{
+            justify-content: center;
+            width: 100%;
+        }
+
+    }
+}

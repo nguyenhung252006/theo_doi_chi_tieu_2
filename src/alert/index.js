@@ -1,0 +1,1 @@
+export {default as ThanhCong} from '../alert/ThanhCong/ThanhCong'
