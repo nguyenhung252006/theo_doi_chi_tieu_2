@@ -1,0 +1,126 @@
+.wrapper {
+    overflow-x: hidden;
+    width: 96%;
+    margin: 24px 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 5%;
+}
+
+.logo {
+    font-size: 30px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    button{
+        border: none;
+        border-radius: 5000px;
+        color: green;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .icon {
+        color: green;
+    }
+
+    span {
+        font-weight: 600;
+        margin-left: 12px;
+    }
+
+    div {
+        font-size: 16px;
+        margin-top: 6px;
+        color: rgb(36, 109, 29);
+    }
+}
+
+
+.main-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    flex: 4;
+}
+
+.thong-tin-so-du {
+    margin-top: 22px;
+    background-color: white;
+    border-radius: 12px;
+
+    h1 {
+        font-size: 24px;
+        margin: 6px 43px;
+    }
+
+    .card {
+        display: flex;
+        justify-content: space-around;
+        padding: 24px 24px;
+
+        >div {
+            min-width: 200px;
+            min-height: 100px;
+            background-color: rgba(113, 194, 110, 0.4);
+            padding: 10px 10px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+
+            &:hover {
+                background-color: rgba(113, 194, 110, 0.4);
+                transform: translateY(-4px); 
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
+            }
+
+            &:active {
+                transform: translateY(-2px); 
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+            }
+
+            >div:nth-child(1) {
+                margin-bottom: 5px;
+                font-weight: 600;
+            }
+        }
+
+    }
+}
+
+.history {
+    background-color: rgb(255, 254, 253);
+    max-height: 600px;
+}
+
+.info-wrapper {
+    background-color: white;
+    border-radius: 12px;
+    flex: 2;
+
+    h1{
+        text-align: center;
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+
+    >div{
+        margin: 12px 12px;
+    }
+
+    .thong-tin{
+        display: flex;
+        flex-direction: column;
+        
+        span{
+            font-weight: 600;
+            margin: 12px 12px;
+            border-bottom: solid 1px wheat;
+        }
+    }
+}

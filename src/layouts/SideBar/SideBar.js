@@ -51,7 +51,6 @@ function SideBar() {
         try {
             const res = await axios.get(`${API_ENDPOINTS.USERS}/${UserId}`, { withCredentials: true })
             const dataUser = res.data.nguoi_dung
-            console.log(res.data)
             setUserName(dataUser.hoTen)
             setUserEmail(dataUser.email)
         } catch (err) {

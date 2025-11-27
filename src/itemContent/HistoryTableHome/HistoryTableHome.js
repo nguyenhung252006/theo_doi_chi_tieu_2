@@ -1,5 +1,5 @@
 import classNames from "classnames/bind";
-import style from './HistoryTable.module.scss'
+import style from './HistoryTableHome.module.scss'
 
 //import icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,7 +19,7 @@ import axios from "axios";
 
 
 const cx = classNames.bind(style)
-function HistoryTable({ className, isPost }) {
+function HistoryTableHome({ className, isPost }) {
 
     //lay id nguoi dung
     const UserId = localStorage.getItem('id')
@@ -78,7 +78,6 @@ function HistoryTable({ className, isPost }) {
                             <th>Mô Tả</th>
                             <th>Danh Mục</th>
                             <th>Số tiền</th>
-                            <th>Hành động</th>
                         </tr>
                     </thead>
                     {(chiTieu.length === 0 && chiTieuKhac.length === 0) && <tbody>
@@ -87,7 +86,6 @@ function HistoryTable({ className, isPost }) {
                             <td>--------</td>
                             <td><span>null</span></td>
                             <td>--------</td>
-                            <td><FontAwesomeIcon className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon className={cx('trash')} icon={faTrash} /></td>
                         </tr>
                     </tbody>}
                     {chiTieu.length > 0 &&
@@ -103,7 +101,7 @@ function HistoryTable({ className, isPost }) {
                                         )}
                                     >{item.danhmuc}</span></td>
                                     <td>-{item.tien}  VNĐ</td>
-                                    <td><FontAwesomeIcon className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon className={cx('trash')} icon={faTrash} /></td>
+    
                                 </tr>
                             </tbody>
                         )))}
@@ -117,7 +115,7 @@ function HistoryTable({ className, isPost }) {
                                         className={cx({purple : item.danhmuc === "Khác"})}
                                     >{item.danhmuc}</span></td>
                                     <td>-{item.tien} VNĐ</td>
-                                    <td><FontAwesomeIcon className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon className={cx('trash')} icon={faTrash} /></td>
+    
                                 </tr>
                             </tbody>
                         )))}
@@ -127,4 +125,4 @@ function HistoryTable({ className, isPost }) {
     );
 }
 
-export default HistoryTable;
+export default HistoryTableHome;

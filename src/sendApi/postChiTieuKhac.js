@@ -4,8 +4,7 @@ import axios from "axios"
 //import API
 import { API_ENDPOINTS } from "../config";
 
-function postChiTieuKhac({ dataToPost, UserId }) {
-
+function postChiTieuKhac(dataToPost, UserId) {
 
     // Post du lieu 
     const Post = async (dataToPost) => {
@@ -15,10 +14,9 @@ function postChiTieuKhac({ dataToPost, UserId }) {
 
         } catch (error) { console.error('Post Error' + error) }
     }
-
     Post(dataToPost)
-
-
 }
 
+
 export default postChiTieuKhac;
+

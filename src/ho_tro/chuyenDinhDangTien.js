@@ -1,12 +1,20 @@
 export default function chuyenDinhDangTien(value) {
-  if (!value) return '';
+  if (value === null || value === undefined || value === "") return "";
 
-  // Bỏ ký tự không phải số (kể cả dấu chấm cũ)
-  let numberString = value.toString().replace(/\D/g, '');
+  // Chuyển sang string để xử lý
+  let str = value.toString();
 
-  // Nếu trống, trả về rỗng
-  if (!numberString) return '';
+  // Kiểm tra xem số âm không
+  const isNegative = str.startsWith("-");
 
-  // Thêm dấu chấm mỗi 3 số từ phải sang trái
-  return numberString.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  // Bỏ tất cả ký tự không phải số
+  let numberString = str.replace(/\D/g, "");
+
+  if (!numberString) return isNegative ? "-0" : "0";
+
+  // Format dấu chấm
+  let formatted = numberString.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+  // Thêm lại dấu âm nếu có
+  return isNegative ? `-${formatted}` : formatted;
 }

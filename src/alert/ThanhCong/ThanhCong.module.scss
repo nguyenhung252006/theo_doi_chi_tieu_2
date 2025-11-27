@@ -1,11 +1,12 @@
 .wrapper {
+    position: fixed;
     display: block;
     align-items: center;
     align-content: center;
     position: fixed;
     top: var(--height-header);
     left: 50%;
-    width: 200px;
+    width: 280px;
     height: 100px;
     background-color: rgba(249, 248, 246, 0.95);
     box-shadow: 0 1px 12px 1px rgba(56, 54, 54, 0.2);

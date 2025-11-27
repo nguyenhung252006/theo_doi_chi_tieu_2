@@ -59,24 +59,30 @@ function ThemChiTieu() {
         if (danhMuc === 'AN_UONG' || danhMuc === 'MUA_SAM' || danhMuc === 'GIAI_TRI') {
             const dataPost = {
                 loaiChiTieu: danhMuc,
-                soTien: soTienPost,
+                soTien: Number(soTienPost),
                 ghiChu: moTa ? moTa : 'Không có ghi chú',
                 ngayTao: ngay
             }
             postChiTieu(dataPost, UserId)
             setIsPost(true)
+            setSoTien('')
+            setMoTa('')
+            setNgay('')
             setTimeout(() => {
                 setIsPost(false)
             }, 1000)
         }
         else if (danhMuc === "KHAC") {
             const dataPost = {
-                soTien: soTienPost,
+                soTien: Number(soTienPost),
                 tenKhoan: moTa ? moTa : 'Chưa rõ',
                 ngayTao: ngay
             }
             postChiTieuKhac(dataPost, UserId)
             setIsPost(true)
+            setSoTien('')
+            setMoTa('')
+            setNgay('')
             setTimeout(() => {
                 setIsPost(false)
             }, 1000)
@@ -123,7 +129,7 @@ function ThemChiTieu() {
                     <div>
                         <h1>Các giao dịch gần đây</h1>
                         <div>
-                            <HistoryTable className={cx('history-table')} />
+                            <HistoryTable isPost={isPost} className={cx('history-table')} />
                         </div>
                     </div>
                 </div>
@@ -131,5 +137,4 @@ function ThemChiTieu() {
         </div>
     );
 }
-
 export default ThemChiTieu;
