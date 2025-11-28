@@ -67,9 +67,13 @@ tbody {
 
         td:nth-child(3) {
             span {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                width: 100px;
+                height: 30px;
                 font-size: 12px;
-                padding: 4px 4px;
-                border-radius: 999px;
+                border-radius: 10px;
 
                 &.green {
                     background-color: greenyellow;

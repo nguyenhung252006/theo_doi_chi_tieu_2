@@ -17,6 +17,9 @@ import { useState, useEffect } from "react";
 //import axios
 import axios from "axios";
 
+//import component
+import SuaThongTin from "../../alert/SuaThongTin/SuaThongTin";
+
 const cx = classNames.bind(style)
 function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
 
@@ -26,6 +29,19 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
     const [chiTieuTatCa, setChiTieuTatCa] = useState([])
     const [chiTieuKhac, setChiTieuKhac] = useState([])
 
+    //state lay id
+    const [id, setId] = useState('')
+
+    //state lay danh muc
+    const[danhMuc, setDanhMuc] = useState('')
+
+    //handle lay id
+    const handleGetId = (id, danhMuc) => {
+        setId(id)
+        setDanhMuc(danhMuc)
+    }
+
+
     //call API
     const GetDataChiTieu = async () => {
         try {
@@ -34,6 +50,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
             const dataKhac = res.data.chi_tieu_khac
             const dataChiTieu = data.filter(item => item.loaiChiTieu === loaiChiTieu)
             const listChiTieu = dataChiTieu.map(item => ({
+                id: item.id,
                 ngay: chuyenNgay(item.ngayTao),
                 mota: item.ghiChu,
                 danhmuc: chuyenLoaiChiTieu(item.loaiChiTieu),
@@ -44,6 +61,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
             // chi tieu khac
             if (loaiChiTieu === "KHAC" && !ghiChu) {
                 const listChiTieuKhac = dataKhac.map(item => ({
+                    id: item.id,
                     ngay: chuyenNgay(item.ngayTao),
                     mota: item.tenKhoan,
                     danhmuc: "Khác",
@@ -55,6 +73,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
             //check loai chi tieu khac va ghi chu
             if (loaiChiTieu === "KHAC" && ghiChu) {
                 const listChiTieuKhac = dataKhac.map(item => ({
+                    id: item.id,
                     ngay: chuyenNgay(item.ngayTao),
                     mota: item.tenKhoan,
                     danhmuc: "Khác",
@@ -67,6 +86,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
             //check loai chi tieu khac va ngay
             if (loaiChiTieu === "KHAC" && ngay) {
                 const listChiTieuKhac = dataKhac.map(item => ({
+                    id: item.id,
                     ngay: chuyenNgay(item.ngayTao),
                     mota: item.tenKhoan,
                     danhmuc: "Khác",
@@ -79,6 +99,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
             //check loai chi tieu khac va ngay va ghi chu
             if (loaiChiTieu === "KHAC" && ngay && ghiChu) {
                 const listChiTieuKhac = dataKhac.map(item => ({
+                    id: item.id,
                     ngay: chuyenNgay(item.ngayTao),
                     mota: item.tenKhoan,
                     danhmuc: "Khác",
@@ -91,6 +112,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
             // check ghi chu va loai chi tieu
             if (ghiChu && (loaiChiTieu)) {
                 const listChiTieu = dataChiTieu.map(item => ({
+                    id: item.id,
                     ngay: chuyenNgay(item.ngayTao),
                     mota: item.ghiChu,
                     danhmuc: chuyenLoaiChiTieu(item.loaiChiTieu),
@@ -105,6 +127,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
             // ngay chu va loai chi tieu
             if (ngay && (loaiChiTieu)) {
                 const listChiTieu = dataChiTieu.map(item => ({
+                    id: item.id,
                     ngay: chuyenNgay(item.ngayTao),
                     mota: item.ghiChu,
                     danhmuc: chuyenLoaiChiTieu(item.loaiChiTieu),
@@ -119,6 +142,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
             // ngay chu va loai chi tieu va ngay
             if (ngay && (loaiChiTieu) && ghiChu) {
                 const listChiTieu = dataChiTieu.map(item => ({
+                    id: item.id,
                     ngay: chuyenNgay(item.ngayTao),
                     mota: item.ghiChu,
                     danhmuc: chuyenLoaiChiTieu(item.loaiChiTieu),
@@ -135,6 +159,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
             //tat ca
             if (loaiChiTieu === "") {
                 const listChiTieu = data.map(item => ({
+                    id: item.id,
                     ngay: chuyenNgay(item.ngayTao),
                     mota: item.ghiChu,
                     danhmuc: chuyenLoaiChiTieu(item.loaiChiTieu),
@@ -142,6 +167,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                     thoiGianNhap: item.thoiGianNhap
                 }))
                 const listChiTieuKhac = dataKhac.map(item => ({
+                    id: item.id,
                     ngay: chuyenNgay(item.ngayTao),
                     mota: item.tenKhoan,
                     danhmuc: "Khác",
@@ -153,6 +179,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
             //loc tat ca va ngay
             if (loaiChiTieu === "" && ngay) {
                 const listChiTieu = data.map(item => ({
+                    id: item.id,
                     ngay: chuyenNgay(item.ngayTao),
                     mota: item.ghiChu,
                     danhmuc: chuyenLoaiChiTieu(item.loaiChiTieu),
@@ -160,6 +187,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                     thoiGianNhap: item.thoiGianNhap
                 }))
                 const listChiTieuKhac = dataKhac.map(item => ({
+                    id: item.id,
                     ngay: chuyenNgay(item.ngayTao),
                     mota: item.tenKhoan,
                     danhmuc: "Khác",
@@ -173,6 +201,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
             //loc tat ca va ghi chu
             if (loaiChiTieu === "" && ghiChu) {
                 const listChiTieu = data.map(item => ({
+                    id: item.id,
                     ngay: chuyenNgay(item.ngayTao),
                     mota: item.ghiChu,
                     danhmuc: chuyenLoaiChiTieu(item.loaiChiTieu),
@@ -180,6 +209,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                     thoiGianNhap: item.thoiGianNhap
                 }))
                 const listChiTieuKhac = dataKhac.map(item => ({
+                    id: item.id,
                     ngay: chuyenNgay(item.ngayTao),
                     mota: item.tenKhoan,
                     danhmuc: "Khác",
@@ -193,6 +223,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
             //loc tat ca va ghi chu va ngay
             if (loaiChiTieu === "" && ghiChu && ngay) {
                 const listChiTieu = data.map(item => ({
+                    id: item.id,
                     ngay: chuyenNgay(item.ngayTao),
                     mota: item.ghiChu,
                     danhmuc: chuyenLoaiChiTieu(item.loaiChiTieu),
@@ -200,6 +231,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                     thoiGianNhap: item.thoiGianNhap
                 }))
                 const listChiTieuKhac = dataKhac.map(item => ({
+                    id: item.id,
                     ngay: chuyenNgay(item.ngayTao),
                     mota: item.tenKhoan,
                     danhmuc: "Khác",
@@ -220,12 +252,14 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
         GetDataChiTieu()
     }, [loaiChiTieu, ghiChu, ngay])
 
-    console.log(chiTieuKhac)
-    console.log(ngay)
+    console.log(id)
+    console.log(danhMuc)
+
     return (
         <>
             <div className={className}>
                 <div className={cx('table-container')}>
+                    <SuaThongTin/>
                     <table>
                         <thead>
                             <tr>
@@ -236,6 +270,15 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                                 <th>Hành động</th>
                             </tr>
                         </thead>
+                        {(chiTieu.length === 0 && chiTieuKhac === 0 && chiTieuTatCa === 0) && <tbody>
+                            <tr>
+                                <td>-----</td>
+                                <td>-----</td>
+                                <td>-----</td>
+                                <td>-----</td>
+                                <td><FontAwesomeIcon className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon className={cx('trash')} icon={faTrash} /></td>
+                            </tr>
+                        </tbody>}
                         {chiTieu.length > 0 && loaiChiTieu !== "KHAC" &&
                             (chiTieu.map((item, index) => (
                                 <tbody key={index}>
@@ -250,7 +293,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                                             )}
                                         >{item.danhmuc}</span></td>
                                         <td>-{item.tien}  VNĐ</td>
-                                        <td><FontAwesomeIcon className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon className={cx('trash')} icon={faTrash} /></td>
+                                        <td><FontAwesomeIcon onClick={() => { handleGetId(item.id, item.danhmuc) }} className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon onClick={() => { handleGetId(item.id, item.danhmuc) }} className={cx('trash')} icon={faTrash} /></td>
                                     </tr>
                                 </tbody>
                             )))}
@@ -269,7 +312,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                                             )}
                                         >{item.danhmuc}</span></td>
                                         <td>-{item.tien}  VNĐ</td>
-                                        <td><FontAwesomeIcon className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon className={cx('trash')} icon={faTrash} /></td>
+                                        <td><FontAwesomeIcon onClick={() => { handleGetId(item.id, item.danhmuc) }} className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon onClick={() => { handleGetId(item.id, item.danhmuc) }} className={cx('trash')} icon={faTrash} /></td>
                                     </tr>
                                 </tbody>
                             )))}
@@ -283,7 +326,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                                             className={cx({ purple: item.danhmuc === "Khác" })}
                                         >{item.danhmuc}</span></td>
                                         <td>-{item.tien} VNĐ</td>
-                                        <td><FontAwesomeIcon className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon className={cx('trash')} icon={faTrash} /></td>
+                                        <td><FontAwesomeIcon onClick={() => { handleGetId(item.id, item.danhmuc) }} className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon onClick={() => { handleGetId(item.id, item.danhmuc) }} className={cx('trash')} icon={faTrash} /></td>
                                     </tr>
                                 </tbody>
                             )))}

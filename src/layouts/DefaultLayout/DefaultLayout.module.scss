@@ -9,7 +9,7 @@
     overflow-x: hidden;
     display: flex;
     width: 100vw;
-    height: 100vh;
+    height: auto;
 }
 
 .side-bar {
@@ -19,4 +19,5 @@
 .content {
     flex: 8;
     background-color: rgb(235, 235, 235);
+    height: 100vh;
 }

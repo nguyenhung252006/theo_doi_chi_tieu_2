@@ -67,6 +67,19 @@ tbody {
         }
 
         td:nth-child(3) {
+            
+            cursor: pointer;
+
+            .trash {
+                color: red;
+                margin-left: 12px;
+            }
+
+            .pen {
+                color: green;
+                margin-right: 12px;
+            }
+
             span {
                 display: inline-flex;
                 justify-content: center;
@@ -107,7 +120,6 @@ tbody {
             display: flex;
             justify-content: center;
             gap: 20px;
-            cursor: pointer;
 
             .trash {
                 color: red;
