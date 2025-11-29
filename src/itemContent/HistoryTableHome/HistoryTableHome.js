@@ -96,8 +96,8 @@ function HistoryTableHome({ className, isPost }) {
                                     <td>{item.mota}</td>
                                     <td><span
                                         className={cx({green : item.danhmuc === "Giải trí"},
-                                            {yellow : item.danhmuc === "Mua Sắm"},
-                                            {blue : item.danhmuc === "Ăn Uống"}
+                                            {yellow : item.danhmuc === "Mua sắm"},
+                                            {blue : item.danhmuc === "Ăn uống"}
                                         )}
                                     >{item.danhmuc}</span></td>
                                     <td>-{item.tien}  VNĐ</td>

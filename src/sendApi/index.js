@@ -1,2 +1,5 @@
-export {default as postChiTieu} from './postChiTieu'
-export {default as postChiTieuKhac} from './postChiTieuKhac'
+export { default as postChiTieu } from './postChiTieu'
+export { default as postChiTieuKhac } from './postChiTieuKhac'
+export { default as putChiTieu } from './putChiTieu'
+export { default as putChiTieuKhac } from './putChiTieuKhac'
+export {default as putDinhMuc} from './putDinhMuc'

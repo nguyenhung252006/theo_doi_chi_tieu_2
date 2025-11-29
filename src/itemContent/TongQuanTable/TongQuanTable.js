@@ -33,10 +33,41 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
     const [id, setId] = useState('')
 
     //state lay danh muc
-    const[danhMuc, setDanhMuc] = useState('')
+    const [danhMuc, setDanhMuc] = useState('')
+
+    //state lay data
+    const [tienData, setTienData] = useState('')
+    const [ngayData, setNgayData] = useState('')
+    const [moTaData, setMoTaData] = useState('')
+
+    //state reload
+    const [reload, setReload] = useState(false);
+
+    //handle reload
+    const handleReload = () => {
+        setReload(prev => !prev);
+    };
+
+    //state check chinh sua
+    const [isChinhSua, setIsChinhSua] = useState(false)
+
+    //handle dong chinh sua
+    const closeSuaThongTin = () => {
+        setIsChinhSua(false);
+    };
+
 
     //handle lay id
-    const handleGetId = (id, danhMuc) => {
+    const handleOnChangeData = (id, danhMuc, moTa, ngay, tien) => {
+        setNgayData(ngay)
+        setTienData(tien)
+        setMoTaData(moTa)
+        setId(id)
+        setDanhMuc(danhMuc)
+        setIsChinhSua(true)
+    }
+
+    const handleDelete = (id) => {
         setId(id)
         setDanhMuc(danhMuc)
     }
@@ -79,7 +110,9 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                     danhmuc: "Khác",
                     tien: chuyenDinhDangTien(item.soTien)
                 }))
-                const list = listChiTieuKhac.filter(item => item.mota.toLowerCase() === ghiChu.toLowerCase())
+                const list = listChiTieuKhac.filter(item => (item.mota || "").toLowerCase() === (ghiChu || "").toLowerCase()
+
+)
                 setChiTieuKhac(list)
             }
 
@@ -105,7 +138,9 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                     danhmuc: "Khác",
                     tien: chuyenDinhDangTien(item.soTien)
                 }))
-                const list = listChiTieuKhac.filter(item => item.ngay === ngay && item.mota.toLowerCase() === ghiChu.toLowerCase())
+                const list = listChiTieuKhac.filter(item => item.ngay === ngay && (item.mota || "").toLowerCase() === (ghiChu || "").toLowerCase()
+
+)
                 setChiTieuKhac(list)
             }
 
@@ -120,7 +155,9 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                     thoiGianNhap: item.thoiGianNhap
                 }))
 
-                const list = listChiTieu.filter(item => item.mota.toLowerCase() === ghiChu.toLowerCase())
+                const list = listChiTieu.filter(item => (item.mota || "").toLowerCase() === (ghiChu || "").toLowerCase()
+
+)
                 setChiTieu(list)
             }
 
@@ -150,7 +187,9 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                     thoiGianNhap: item.thoiGianNhap
                 }))
 
-                const list = listChiTieu.filter(item => item.ngay === chuyenNgay(ngay) && item.mota.toLowerCase() === ghiChu.toLowerCase())
+                const list = listChiTieu.filter(item => item.ngay === chuyenNgay(ngay) && (item.mota || "").toLowerCase() === (ghiChu || "").toLowerCase()
+
+)
                 setChiTieu(list)
             }
 
@@ -216,7 +255,9 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                     tien: chuyenDinhDangTien(item.soTien)
                 }))
                 const listAll = [...listChiTieu, ...listChiTieuKhac]
-                const list = listAll.filter(item => item.mota.toLowerCase() === ghiChu.toLowerCase())
+                const list = listAll.filter(item => (item.mota || "").toLowerCase() === (ghiChu || "").toLowerCase()
+
+)
                 setChiTieuTatCa(list)
             }
 
@@ -238,7 +279,9 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                     tien: chuyenDinhDangTien(item.soTien)
                 }))
                 const listAll = [...listChiTieu, ...listChiTieuKhac]
-                const list = listAll.filter(item => item.mota.toLowerCase() === ghiChu.toLowerCase() && item.ngay === chuyenNgay(ngay))
+                const list = listAll.filter(item => (item.mota || "").toLowerCase() === (ghiChu || "").toLowerCase()
+
+ && item.ngay === chuyenNgay(ngay))
                 setChiTieuTatCa(list)
             }
 
@@ -250,16 +293,16 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
     //lay data
     useEffect(() => {
         GetDataChiTieu()
-    }, [loaiChiTieu, ghiChu, ngay])
-
-    console.log(id)
-    console.log(danhMuc)
+    }, [loaiChiTieu, ghiChu, ngay, reload])
 
     return (
         <>
             <div className={className}>
                 <div className={cx('table-container')}>
-                    <SuaThongTin/>
+                    {isChinhSua && <SuaThongTin
+                        onSubmitSuccess={handleReload}
+                        isClose={closeSuaThongTin} id={id} loai={danhMuc} ngay={ngayData} tien={tienData} moTa={moTaData}
+                    />}
                     <table>
                         <thead>
                             <tr>
@@ -270,7 +313,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                                 <th>Hành động</th>
                             </tr>
                         </thead>
-                        {(chiTieu.length === 0 && chiTieuKhac === 0 && chiTieuTatCa === 0) && <tbody>
+                        {(chiTieu.length === 0 && chiTieuKhac.length === 0 && chiTieuTatCa.length === 0) && <tbody>
                             <tr>
                                 <td>-----</td>
                                 <td>-----</td>
@@ -287,13 +330,13 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                                         <td>{item.mota}</td>
                                         <td><span
                                             className={cx({ green: item.danhmuc === "Giải trí" },
-                                                { yellow: item.danhmuc === "Mua Sắm" },
-                                                { blue: item.danhmuc === "Ăn Uống" },
+                                                { yellow: item.danhmuc === "Mua sắm" },
+                                                { blue: item.danhmuc === "Ăn uống" },
                                                 { purple: item.danhmuc === "Khác" }
                                             )}
                                         >{item.danhmuc}</span></td>
                                         <td>-{item.tien}  VNĐ</td>
-                                        <td><FontAwesomeIcon onClick={() => { handleGetId(item.id, item.danhmuc) }} className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon onClick={() => { handleGetId(item.id, item.danhmuc) }} className={cx('trash')} icon={faTrash} /></td>
+                                        <td><FontAwesomeIcon onClick={() => { handleOnChangeData(item.id, item.danhmuc, item.mota, item.ngay, item.tien) }} className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon onClick={() => { handleDelete(item.id, item.danhmuc) }} className={cx('trash')} icon={faTrash} /></td>
                                     </tr>
                                 </tbody>
                             )))}
@@ -306,13 +349,13 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                                         <td>{item.mota}</td>
                                         <td><span
                                             className={cx({ green: item.danhmuc === "Giải trí" },
-                                                { yellow: item.danhmuc === "Mua Sắm" },
-                                                { blue: item.danhmuc === "Ăn Uống" },
+                                                { yellow: item.danhmuc === "Mua sắm" },
+                                                { blue: item.danhmuc === "Ăn uống" },
                                                 { purple: item.danhmuc === "Khác" }
                                             )}
                                         >{item.danhmuc}</span></td>
                                         <td>-{item.tien}  VNĐ</td>
-                                        <td><FontAwesomeIcon onClick={() => { handleGetId(item.id, item.danhmuc) }} className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon onClick={() => { handleGetId(item.id, item.danhmuc) }} className={cx('trash')} icon={faTrash} /></td>
+                                        <td><FontAwesomeIcon onClick={() => { handleOnChangeData(item.id, item.danhmuc, item.mota, item.ngay, item.tien) }} className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon onClick={() => { handleDelete(item.id, item.danhmuc) }} className={cx('trash')} icon={faTrash} /></td>
                                     </tr>
                                 </tbody>
                             )))}
@@ -326,7 +369,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                                             className={cx({ purple: item.danhmuc === "Khác" })}
                                         >{item.danhmuc}</span></td>
                                         <td>-{item.tien} VNĐ</td>
-                                        <td><FontAwesomeIcon onClick={() => { handleGetId(item.id, item.danhmuc) }} className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon onClick={() => { handleGetId(item.id, item.danhmuc) }} className={cx('trash')} icon={faTrash} /></td>
+                                        <td><FontAwesomeIcon onClick={() => { handleOnChangeData(item.id, item.danhmuc, item.mota, item.ngay, item.tien) }} className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon onClick={() => { handleDelete(item.id, item.danhmuc) }} className={cx('trash')} icon={faTrash} /></td>
                                     </tr>
                                 </tbody>
                             )))}

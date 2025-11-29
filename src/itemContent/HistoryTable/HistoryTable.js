@@ -17,6 +17,8 @@ import { API_ENDPOINTS } from "../../config";
 //import axios
 import axios from "axios";
 
+//import component
+import SuaThongTin from "../../alert/SuaThongTin/SuaThongTin";
 
 const cx = classNames.bind(style)
 function HistoryTable({ className, isPost }) {
@@ -28,6 +30,48 @@ function HistoryTable({ className, isPost }) {
     const [chiTieu, setChiTieu] = useState([])
     const [chiTieuKhac, setChiTieuKhac] = useState([])
 
+    //state lay id
+    const [id, setId] = useState('')
+
+    //state lay danh muc
+    const [danhMuc, setDanhMuc] = useState('')
+
+    //state lay data
+    const [tienData, setTienData] = useState('')
+    const [ngayData, setNgayData] = useState('')
+    const [moTaData, setMoTaData] = useState('')
+
+    //state reload
+    const [reload, setReload] = useState(false);
+
+    //handle reload
+    const handleReload = () => {
+        setReload(prev => !prev);
+    };
+
+    //state check chinh sua
+    const [isChinhSua, setIsChinhSua] = useState(false)
+
+    //handle dong chinh sua
+    const closeSuaThongTin = () => {
+        setIsChinhSua(false);
+    };
+
+
+    //handle lay id
+    const handleOnChangeData = (id, danhMuc, moTa, ngay, tien) => {
+        setNgayData(ngay)
+        setTienData(tien)
+        setMoTaData(moTa)
+        setId(id)
+        setDanhMuc(danhMuc)
+        setIsChinhSua(true)
+    }
+
+    const handleDelete = (id) => {
+        setId(id)
+        setDanhMuc(danhMuc)
+    }
 
 
 
@@ -41,6 +85,7 @@ function HistoryTable({ className, isPost }) {
 
             // thiet lap lich su
             const lichSuChiTieu = dataChiTieu.map(item => ({
+                id: item.id,
                 ngay: chuyenNgay(item.ngayTao),
                 mota: item.ghiChu,
                 danhmuc: chuyenLoaiChiTieu(item.loaiChiTieu),
@@ -48,6 +93,7 @@ function HistoryTable({ className, isPost }) {
             }))
 
             const lichSuChiTieuKhac = dataChiTieuKhac.map(item => ({
+                id: item.id,
                 ngay: chuyenNgay(item.ngayTao),
                 mota: item.tenKhoan,
                 danhmuc: "Khác",
@@ -65,12 +111,17 @@ function HistoryTable({ className, isPost }) {
     //lay data
     useEffect(() => {
         GetData()
-    }, [isPost])
+    }, [isPost, reload])
 
+    console.log(id)
 
     return (
         <div className={className}>
             <div className={cx('table-container')}>
+                {isChinhSua && <SuaThongTin
+                    onSubmitSuccess={handleReload}
+                    isClose={closeSuaThongTin} id={id} loai={danhMuc} ngay={ngayData} tien={tienData} moTa={moTaData}
+                />}
                 <table>
                     <thead>
                         <tr>
@@ -97,13 +148,13 @@ function HistoryTable({ className, isPost }) {
                                     <td>{item.ngay}</td>
                                     <td>{item.mota}</td>
                                     <td><span
-                                        className={cx({green : item.danhmuc === "Giải trí"},
-                                            {yellow : item.danhmuc === "Mua Sắm"},
-                                            {blue : item.danhmuc === "Ăn Uống"}
+                                        className={cx({ green: item.danhmuc === "Giải trí" },
+                                            { yellow: item.danhmuc === "Mua sắm" },
+                                            { blue: item.danhmuc === "Ăn uống" }
                                         )}
                                     >{item.danhmuc}</span></td>
                                     <td>-{item.tien}  VNĐ</td>
-                                    <td><FontAwesomeIcon className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon className={cx('trash')} icon={faTrash} /></td>
+                                    <td><FontAwesomeIcon onClick={() => { handleOnChangeData(item.id, item.danhmuc, item.mota, item.ngay, item.tien) }} className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon onClick={() => { handleDelete(item.id, item.danhmuc) }} className={cx('trash')} icon={faTrash} /></td>
                                 </tr>
                             </tbody>
                         )))}
@@ -114,10 +165,10 @@ function HistoryTable({ className, isPost }) {
                                     <td>{item.ngay}</td>
                                     <td>{item.mota}</td>
                                     <td><span
-                                        className={cx({purple : item.danhmuc === "Khác"})}
+                                        className={cx({ purple: item.danhmuc === "Khác" })}
                                     >{item.danhmuc}</span></td>
                                     <td>-{item.tien} VNĐ</td>
-                                    <td><FontAwesomeIcon className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon className={cx('trash')} icon={faTrash} /></td>
+                                    <td><FontAwesomeIcon onClick={() => { handleOnChangeData(item.id, item.danhmuc, item.mota, item.ngay, item.tien) }} className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon onClick={() => { handleDelete(item.id, item.danhmuc) }} className={cx('trash')} icon={faTrash} /></td>
                                 </tr>
                             </tbody>
                         )))}

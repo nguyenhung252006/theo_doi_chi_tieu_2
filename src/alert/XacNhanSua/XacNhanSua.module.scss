@@ -4,7 +4,7 @@
     left: 50%;
     transform: translate(-20%, -50%);
     width: 400px;
-    height: 200px;
+    min-height: 280px;
     max-width: 90%;
     background-color: #ffffff;
     border-radius: 16px;
@@ -12,34 +12,34 @@
     z-index: 100;
     display: flex;
     flex-direction: column;
-    gap: 10px;
     font-family: 'Arial', sans-serif;
-
     opacity: 0;
     animation: popupShow 0.35s ease forwards;
 
 
 
-    div {
+    >div:nth-child(1) {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
         width: 100%;
         margin-top: 18px;
+        gap: 20px;
 
         >div:nth-child(1) {
+            display: flex;
+            flex-direction: column;
             font-size: 24px;
             font-weight: 600;
             font-family: 'Times New Roman', Times, serif;
+            align-items: center;
         }
 
-        >div:nth-child(2) {
+        >div:nth-child(3) {
             display: flex;
             flex-direction: row;
             width: 100%;
             justify-content: space-around;
-
+            align-items: center;
         }
     }
 
@@ -48,7 +48,6 @@
 .icon {
     color: green;
     font-size: 40px;
-    margin-bottom: 10px;
 }
 
 .ok,
@@ -97,6 +96,45 @@
     }
 }
 
+//thong tin 
+.thong-tin {
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    padding-left: 12%;
+
+    h3,
+    span {
+        text-align: left;
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    h3 {
+        font-size: 16px;
+
+    }
+
+    span {
+        font-size: 14px;
+        color: green;
+    }
+
+}
+
+
+.check {
+    padding: 10px 10px;
+    color: #27c74a;
+    font-size: 30px;
+    animation: popupShowIcon linear 1s;
+}
+
 
 
 @keyframes popupShow {
@@ -108,5 +146,15 @@
     100% {
         opacity: 1;
         transform: translate(-20%, -50%) scale(1);
+    }
+}
+
+@keyframes popupShowIcon {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }

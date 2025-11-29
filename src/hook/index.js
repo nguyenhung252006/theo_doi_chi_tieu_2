@@ -1,2 +1,2 @@
 export {default as LoginHook} from '../hook/LoginHook/LoginHook'
-export {default as OutWrapper} from './OutWrapper/OutWrapper'
+export {default as useOutWrapper} from './useOutWrapper/useOutWrapper'

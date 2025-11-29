@@ -14,8 +14,12 @@ import axios from "axios";
 //import Hook
 import { useState, useEffect } from "react";
 
-//import ho tro
-import { chuyenDinhDangTien } from "../../ho_tro";
+//import ho tro 
+import { chuyenDinhDangTien, chuyenNgay, chuyenLoaiChiTieu } from "../../ho_tro";
+
+//import component
+import SuaThongTin from "../../alert/SuaThongTin/SuaThongTin";
+
 
 const cx = classNames.bind(style)
 function DinhMucTable({ className, UserId, isPost }) {
@@ -23,11 +27,45 @@ function DinhMucTable({ className, UserId, isPost }) {
     //state lay thong tin
     const [thongTin, setThongTin] = useState([])
 
+    //state lay id
+    const [id, setId] = useState('')
+
+    //state lay data
+    const [soTienData, setSoTienData] = useState('')
+    const [soNgayData, setSoNgayData] = useState('')
+
+    //state reload
+    const [reload, setReload] = useState(false);
+
+    //handle reload
+    const handleReload = () => {
+        setReload(prev => !prev);
+    };
+
+    //handle lay id
+    const handleOnChangeData = (id, ngay, tien) => {
+        setSoNgayData(ngay)
+        setSoTienData(tien)
+
+        setId(id)
+        setIsChinhSua(true)
+    }
+
+    //handle dong chinh sua
+    const closeSuaThongTin = () => {
+        setIsChinhSua(false);
+    };
+
+    //state check chinh sua
+    const [isChinhSua, setIsChinhSua] = useState(false)
+
+    //call api
     const GetData = async () => {
         try {
             const res = await axios.get(`${API_ENDPOINTS.USERS}/${UserId}`, { withCredentials: true })
             const dataDinhMuc = res.data.dinh_muc_chi_tieu
             const listThongTin = dataDinhMuc.map(item => ({
+                id: item.id,
                 tien: item.soTienDinhMuc,
                 ngay: item.soNgay,
             }))
@@ -41,13 +79,17 @@ function DinhMucTable({ className, UserId, isPost }) {
     //lay data
     useEffect(() => {
         GetData()
-    }, [isPost])
+    }, [isPost, reload])
 
-    console.log(thongTin)
 
     return (
         <div className={className}>
             <div className={cx('table-container')}>
+                {isChinhSua && <SuaThongTin
+                    isDinhMuc
+                    onSubmitSuccess={handleReload}
+                    isClose={closeSuaThongTin} id={id} soNgay={soNgayData} soTien={soTienData}
+                />}
                 <table>
                     <thead>
                         <tr>
@@ -67,8 +109,8 @@ function DinhMucTable({ className, UserId, isPost }) {
                         <tbody key={index}>
                             <tr>
                                 <td>{item.ngay}</td>
-                                <td style={{color: 'green'}}>{chuyenDinhDangTien(item.tien)} VNĐ</td>
-                                <td><FontAwesomeIcon className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon className={cx('trash')} icon={faTrash} /></td>
+                                <td style={{ color: 'green' }}>{chuyenDinhDangTien(item.tien)} VNĐ</td>
+                                <td><FontAwesomeIcon onClick={() => { handleOnChangeData(item.id, item.ngay, item.tien) }} className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon className={cx('trash')} icon={faTrash} /></td>
                             </tr>
                         </tbody>
                     ))}
