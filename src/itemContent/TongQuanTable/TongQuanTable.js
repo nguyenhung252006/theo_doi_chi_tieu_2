@@ -18,7 +18,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 //import component
-import SuaThongTin from "../../alert/SuaThongTin/SuaThongTin";
+import { SuaThongTin, Delete } from "../../alert";
 
 const cx = classNames.bind(style)
 function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
@@ -39,6 +39,9 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
     const [tienData, setTienData] = useState('')
     const [ngayData, setNgayData] = useState('')
     const [moTaData, setMoTaData] = useState('')
+
+    //state check is Delete
+    const [isDelete, setIsDelete] = useState(false)
 
     //state reload
     const [reload, setReload] = useState(false);
@@ -67,9 +70,10 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
         setIsChinhSua(true)
     }
 
-    const handleDelete = (id) => {
+    const handleDelete = (id, danhMuc) => {
         setId(id)
         setDanhMuc(danhMuc)
+        setIsDelete(true)
     }
 
 
@@ -112,7 +116,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                 }))
                 const list = listChiTieuKhac.filter(item => (item.mota || "").toLowerCase() === (ghiChu || "").toLowerCase()
 
-)
+                )
                 setChiTieuKhac(list)
             }
 
@@ -140,7 +144,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                 }))
                 const list = listChiTieuKhac.filter(item => item.ngay === ngay && (item.mota || "").toLowerCase() === (ghiChu || "").toLowerCase()
 
-)
+                )
                 setChiTieuKhac(list)
             }
 
@@ -157,7 +161,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
 
                 const list = listChiTieu.filter(item => (item.mota || "").toLowerCase() === (ghiChu || "").toLowerCase()
 
-)
+                )
                 setChiTieu(list)
             }
 
@@ -189,7 +193,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
 
                 const list = listChiTieu.filter(item => item.ngay === chuyenNgay(ngay) && (item.mota || "").toLowerCase() === (ghiChu || "").toLowerCase()
 
-)
+                )
                 setChiTieu(list)
             }
 
@@ -257,7 +261,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                 const listAll = [...listChiTieu, ...listChiTieuKhac]
                 const list = listAll.filter(item => (item.mota || "").toLowerCase() === (ghiChu || "").toLowerCase()
 
-)
+                )
                 setChiTieuTatCa(list)
             }
 
@@ -281,7 +285,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
                 const listAll = [...listChiTieu, ...listChiTieuKhac]
                 const list = listAll.filter(item => (item.mota || "").toLowerCase() === (ghiChu || "").toLowerCase()
 
- && item.ngay === chuyenNgay(ngay))
+                    && item.ngay === chuyenNgay(ngay))
                 setChiTieuTatCa(list)
             }
 
@@ -299,6 +303,13 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
         <>
             <div className={className}>
                 <div className={cx('table-container')}>
+                    {isDelete && <Delete
+                        onSubmitSuccess={handleReload}
+                        id={id}
+                        loai={danhMuc}
+                        isClose={() => { setIsDelete(false) }}
+                        isCancel={() => { setIsDelete(false) }}
+                    />}
                     {isChinhSua && <SuaThongTin
                         onSubmitSuccess={handleReload}
                         isClose={closeSuaThongTin} id={id} loai={danhMuc} ngay={ngayData} tien={tienData} moTa={moTaData}

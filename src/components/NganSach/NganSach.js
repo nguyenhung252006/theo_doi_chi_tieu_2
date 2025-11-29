@@ -41,6 +41,12 @@ function NganSach() {
     //state check post
     const [isPost, setIsPost] = useState(false)
 
+    //cehck reload
+    const [reload, setReload] = useState(false);
+
+    const handleReload = () => setReload(prev => !prev);
+
+
     //handle xu li post
     const handleChangeTien = (e) => {
         const value = e.target.value
@@ -94,7 +100,7 @@ function NganSach() {
     //lay data
     useEffect(() => {
         GetData()
-    }, [isPost])
+    }, [isPost, reload])
 
     return (
         <div className={cx('wrapper')}>
@@ -131,6 +137,7 @@ function NganSach() {
             </div>
             <div className={cx('table-wrapper')}>
                 <DinhMucTable
+                    OnReload={handleReload}
                     UserId={UserId}
                     isPost={isPost}
                 />

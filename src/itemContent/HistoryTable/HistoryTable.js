@@ -18,7 +18,7 @@ import { API_ENDPOINTS } from "../../config";
 import axios from "axios";
 
 //import component
-import SuaThongTin from "../../alert/SuaThongTin/SuaThongTin";
+import { SuaThongTin, Delete } from "../../alert";
 
 const cx = classNames.bind(style)
 function HistoryTable({ className, isPost }) {
@@ -44,6 +44,9 @@ function HistoryTable({ className, isPost }) {
     //state reload
     const [reload, setReload] = useState(false);
 
+    //state check is Delete
+    const [isDelete, setIsDelete] = useState(false)
+
     //handle reload
     const handleReload = () => {
         setReload(prev => !prev);
@@ -68,9 +71,10 @@ function HistoryTable({ className, isPost }) {
         setIsChinhSua(true)
     }
 
-    const handleDelete = (id) => {
+    const handleDelete = (id, danhMuc) => {
         setId(id)
         setDanhMuc(danhMuc)
+        setIsDelete(true)
     }
 
 
@@ -118,6 +122,13 @@ function HistoryTable({ className, isPost }) {
     return (
         <div className={className}>
             <div className={cx('table-container')}>
+                {isDelete && <Delete
+                    onSubmitSuccess={handleReload}
+                    id={id}
+                    loai={danhMuc}
+                    isClose={() => { setIsDelete(false) }}
+                    isCancel={() => { setIsDelete(false) }}
+                />}
                 {isChinhSua && <SuaThongTin
                     onSubmitSuccess={handleReload}
                     isClose={closeSuaThongTin} id={id} loai={danhMuc} ngay={ngayData} tien={tienData} moTa={moTaData}

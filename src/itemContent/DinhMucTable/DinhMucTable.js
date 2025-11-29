@@ -18,11 +18,11 @@ import { useState, useEffect } from "react";
 import { chuyenDinhDangTien, chuyenNgay, chuyenLoaiChiTieu } from "../../ho_tro";
 
 //import component
-import SuaThongTin from "../../alert/SuaThongTin/SuaThongTin";
+import { SuaThongTin, Delete } from "../../alert";
 
 
 const cx = classNames.bind(style)
-function DinhMucTable({ className, UserId, isPost }) {
+function DinhMucTable({ className, UserId, isPost, OnReload }) {
 
     //state lay thong tin
     const [thongTin, setThongTin] = useState([])
@@ -36,6 +36,10 @@ function DinhMucTable({ className, UserId, isPost }) {
 
     //state reload
     const [reload, setReload] = useState(false);
+
+
+    //state check is Delete
+    const [isDelete, setIsDelete] = useState(false)
 
     //handle reload
     const handleReload = () => {
@@ -58,6 +62,12 @@ function DinhMucTable({ className, UserId, isPost }) {
 
     //state check chinh sua
     const [isChinhSua, setIsChinhSua] = useState(false)
+
+    const handleDelete = (id) => {
+        setId(id)
+        setIsDelete(true)
+    }
+
 
     //call api
     const GetData = async () => {
@@ -85,6 +95,16 @@ function DinhMucTable({ className, UserId, isPost }) {
     return (
         <div className={className}>
             <div className={cx('table-container')}>
+                {isDelete && <Delete
+                    isDinhMuc
+                    onSubmitSuccess={() => {
+                        handleReload()
+                        if(OnReload) OnReload()
+                    }}
+                    id={id}
+                    isClose={() => { setIsDelete(false) }}
+                    isCancel={() => { setIsDelete(false) }}
+                />}
                 {isChinhSua && <SuaThongTin
                     isDinhMuc
                     onSubmitSuccess={handleReload}
@@ -110,7 +130,7 @@ function DinhMucTable({ className, UserId, isPost }) {
                             <tr>
                                 <td>{item.ngay}</td>
                                 <td style={{ color: 'green' }}>{chuyenDinhDangTien(item.tien)} VNĐ</td>
-                                <td><FontAwesomeIcon onClick={() => { handleOnChangeData(item.id, item.ngay, item.tien) }} className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon className={cx('trash')} icon={faTrash} /></td>
+                                <td><FontAwesomeIcon onClick={() => { handleOnChangeData(item.id, item.ngay, item.tien) }} className={cx('pen')} icon={faPenToSquare} /><FontAwesomeIcon onClick={() => { handleDelete(item.id) }} className={cx('trash')} icon={faTrash} /></td>
                             </tr>
                         </tbody>
                     ))}
