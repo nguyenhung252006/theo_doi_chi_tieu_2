@@ -8,7 +8,7 @@ import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 //import ho tro 
 import { chuyenDinhDangTien, chuyenNgay, chuyenLoaiChiTieu } from "../../ho_tro";
 
-//import hook
+//import hookc
 import { useState, useEffect } from "react";
 
 //import API 

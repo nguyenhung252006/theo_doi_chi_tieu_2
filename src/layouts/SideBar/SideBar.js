@@ -18,6 +18,10 @@ import axios from "axios";
 //import API
 import { API_ENDPOINTS } from "../../config";
 
+
+
+
+
 const cx = classNames.bind(style)
 function SideBar() {
 
@@ -30,10 +34,18 @@ function SideBar() {
     const [userName, setUserName] = useState('')
     const [userEmail, setUserEmail] = useState('')
 
+    //state check login
+    const [isLogin, setIsLogin] = useState(false)
+
     //handle Login
     const handleLogin = () => {
         localStorage.removeItem('id')
         navigate('/login')
+    }
+
+    //handle check isLogin
+    const handleIsLogin = () => {
+        setIsLogin(prev => !prev)
     }
 
     //luu tru cac muc lua chon
@@ -43,7 +55,6 @@ function SideBar() {
         { selectName: "Ngân Sách", path: "/Ngan-sach", icon: faSackDollar },
         { selectName: "Thêm Chi Tiêu", path: "/Them-chi-tieu", icon: faMoneyBillTransfer },
         { selectName: "Báo Cáo", path: "/Bao-cao", icon: faBell },
-        { selectName: "Đăng Xuất", path: "/login", icon: faRightFromBracket },
     ]
 
     //lay thong tin nguoi dung
@@ -54,7 +65,7 @@ function SideBar() {
             setUserName(dataUser.hoTen)
             setUserEmail(dataUser.email)
         } catch (err) {
-            console.err(err)
+            console.error(err)
         }
     }
 
@@ -66,7 +77,7 @@ function SideBar() {
     const location = useLocation()
 
     return (
-        <div className={cx('wrapper')}>
+        <div className={cx('sidebar-wrapper')}>
             <div className={cx('logo-wrapper')}>
                 <div>
                     <FontAwesomeIcon className={cx('logo')} icon={faPiggyBank} />
@@ -75,10 +86,16 @@ function SideBar() {
             </div>
             <div className={cx('profile-wrapper')}>
                 <div className={cx('icon')}><FontAwesomeIcon icon={faCircleUser} /></div>
-                <div className={cx('profile')}>
+                <div onClick={() => { handleIsLogin() }} className={cx('profile')}>
                     <span>{userName}</span>
                     <div>{userEmail}</div>
                 </div>
+                {isLogin && <div className={cx('login')}>
+                    <div>
+                        <FontAwesomeIcon className={cx('icon-login')} icon={faRightFromBracket} />
+                        <span onClick={() => { handleLogin() }}>Đăng xuất</span>
+                    </div>
+                </div>}
             </div>
             <div className={cx('select-wrapper')}>
                 {listSelect.map((item, index) => {
@@ -86,9 +103,9 @@ function SideBar() {
 
                     return (
                         <Link key={index} to={item.path}>
-                            <button onClick={item.path === "/login" ? () => { handleLogin() } : () => { }} className={cx(isActive && "active")}>
+                            <button >
                                 <FontAwesomeIcon className={cx('icon')} icon={item.icon} />
-                                <span>{item.selectName}</span>
+                                <span className={cx(isActive && "active")}>{item.selectName}</span>
                             </button>
                         </Link>
                     );
