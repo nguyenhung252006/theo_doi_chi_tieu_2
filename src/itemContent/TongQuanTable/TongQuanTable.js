@@ -48,7 +48,7 @@ function TongQuanTable({ className, loaiChiTieu, UserId, ngay, ghiChu }) {
 
     //handle reload
     const handleReload = () => {
-        setReload(prev => !prev);
+        setReload(prev => !prev); 
     };
 
     //state check chinh sua
